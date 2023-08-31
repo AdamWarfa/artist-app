@@ -4,6 +4,7 @@ import { getArtists, createArtist, updateArtist, deleteArtist } from "./rest-ser
 window.addEventListener("load", initApp);
 
 let artists;
+let chosenArtist;
 
 async function initApp() {
   artists = await getArtists("../backend/data.json");
@@ -35,7 +36,7 @@ function showArtists(artistList) {
         </article>
     `
     );
-    document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateArtist(artist));
+    document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
     document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteArtist(artist));
     document.querySelector("article:last-child .btn-favorite").addEventListener("click", () => favoriteArtist(artist));
   }
@@ -49,4 +50,23 @@ function favoriteArtist(artist) {
   alert(artist);
 }
 
-export default updateGrid;
+function updateClicked(artist) {
+  document.querySelector("#update-dialog").showModal();
+
+  chosenArtist = artist;
+
+  document.querySelector("#updateName").value = artist.name;
+  document.querySelector("#updateActive").value = artist.activeSince;
+  document.querySelector("#updateGenres").value = artist.genres;
+  document.querySelector("#updateLabels").value = artist.labels;
+  document.querySelector("#updateBirthdate").value = artist.birthdate;
+  document.querySelector("#updateDesc").value = artist.shortDescription;
+  document.querySelector("#updateWebsite").value = artist.website;
+  document.querySelector("#updateImage").value = artist.image;
+
+  console.log(chosenArtist.id);
+
+  document.querySelector("#update-form").addEventListener("submit", updateArtist);
+}
+
+export { updateGrid, chosenArtist };
