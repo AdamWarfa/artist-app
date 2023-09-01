@@ -2,7 +2,6 @@ import express, { request, response } from "express";
 import cors from "cors";
 import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
-import { log } from "console";
 
 const app = express();
 const port = 3000;
@@ -17,17 +16,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/artists", async (req, res) => {
-  // const data = await fs.readFile("data.json");
-  // const artists = JSON.parse(data);
   console.log(artists);
   res.json(artists);
 });
 
 app.post("/artists", async (req, res) => {
   console.log(req.body);
-
-  // const data = await fs.readFile("data.json");
-  // const artists = JSON.parse(data);
 
   const newArtist = req.body;
   newArtist.id = uuidv4();
@@ -63,6 +57,30 @@ app.put("/artists/:id", async (req, res) => {
 
   fs.writeFile("data.json", JSON.stringify(artists));
   res.json(artists);
+});
+
+app.delete("/artists/:id", async (request, response) => {
+  const id = request.params.id;
+  console.log(id);
+
+  const data = await fs.readFile("data.json");
+  const artists = JSON.parse(data);
+
+  let artistToDelete = artists.find((artist) => artist.id == id);
+  if (!artistToDelete) {
+    return;
+  }
+
+  console.log(artistToDelete);
+
+  let position = artists.indexOf(artistToDelete);
+
+  console.log(position);
+
+  artists.splice(position, 1);
+
+  fs.writeFile("data.json", JSON.stringify(artists));
+  response.json(artists);
 });
 
 app.listen(port, () => {

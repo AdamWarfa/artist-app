@@ -11,11 +11,29 @@
       <h1>ARTIST-APP</h1>
     </header>
     <main>
-      <form action="" id="create-form">
-        <input type="text" name="newName" id="newName" placeholder="Type name..." />
-        <input type="text" name="newActive" id="newActive" placeholder="Type debut year..." />
-        <button>CREATE</button>
-      </form>
+      <button id="btn-create">CREATE ARTIST</button>
+      <dialog id="create-dialog">
+        <form action="" id="create-form">
+          <label for="newName">Name</label>
+          <input type="text" name="newName" id="newName" placeholder="Type name..." />
+          <label for="newGenres">Genres</label>
+          <input type="text" name="newGenres" id="newGenres" placeholder="Choose Genres..." />
+          <label for="newLabels">Labels</label>
+          <input type="text" name="newLabels" id="newLabels" placeholder="Choose Labels..." />
+          <label for="newDesc">Description</label>
+          <input type="text" name="newDesc" id="newDesc" placeholder="Choose Description..." />
+          <br />
+          <label for="newBirthdate">Birthdate</label>
+          <input type="date" name="newBirthdate" id="newBirthdate" placeholder="Change Birthdate..." />
+          <label for="newActive">Debut Year</label>
+          <input type="text" name="newActive" id="newActive" placeholder="Type debut year..." />
+          <label for="newWebsite">Website</label>
+          <input type="url" name="newWebsite" id="newWebsite" placeholder="Change Website..." />
+          <label for="newImage">Image</label>
+          <input type="url" name="newImage" id="newImage" placeholder="Change Image URL..." />
+          <button>CREATE</button>
+        </form>
+      </dialog>
       <section id="grid-container"></section>
       <dialog id="update-dialog">
         <form action="" id="update-form">
@@ -38,6 +56,11 @@
           <input type="url" name="updateImage" id="updateImage" placeholder="Change Image URL..." />
           <button>SUBMIT</button>
         </form>
+      </dialog>
+      <dialog id="delete-dialog">
+        <p>Are you sure you want to delete this artist?</p>
+        <button id="btn-delete-confirm">DELETE</button>
+        <button id="btn-delete-cancel">CANCEL</button>
       </dialog>
     </main>
     <footer></footer>

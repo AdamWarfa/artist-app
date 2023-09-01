@@ -5,6 +5,7 @@ window.addEventListener("load", initApp);
 
 let artists;
 let chosenArtist;
+let favoriteList = [];
 
 async function initApp() {
   artists = await getArtists("../backend/data.json");
@@ -12,7 +13,7 @@ async function initApp() {
 
   showArtists(artists);
 
-  document.querySelector("#create-form").addEventListener("submit", createArtist);
+  document.querySelector("#btn-create").addEventListener("click", createClicked);
 }
 
 function showArtists(artistList) {
@@ -32,12 +33,12 @@ function showArtists(artistList) {
             <p class="artist-active">${artist.activeSince}</p>
             <button class="btn-update">UPDATE</button>
             <button class="btn-delete">DELETE</button>
-            <button class="btn-favorite">FAVORITE</button>
+            <button class="btn-favorite">🖤</button>
         </article>
     `
     );
     document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
-    document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteArtist(artist));
+    document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id));
     document.querySelector("article:last-child .btn-favorite").addEventListener("click", () => favoriteArtist(artist));
   }
 }
@@ -47,7 +48,17 @@ async function updateGrid() {
 }
 
 function favoriteArtist(artist) {
-  alert(artist);
+  if (favoriteList.includes(artist)) {
+    alert("Artist already favorited");
+  } else {
+    favoriteList.push(artist);
+    console.log(favoriteList);
+  }
+}
+
+function createClicked() {
+  document.querySelector("#create-dialog").showModal();
+  document.querySelector("#create-form").addEventListener("submit", createArtist);
 }
 
 function updateClicked(artist) {
@@ -67,6 +78,17 @@ function updateClicked(artist) {
   console.log(chosenArtist.id);
 
   document.querySelector("#update-form").addEventListener("submit", updateArtist);
+}
+
+function deleteClicked(id) {
+  const delDialog = document.querySelector("#delete-dialog");
+  delDialog.showModal();
+  document.querySelector("#btn-delete-confirm").addEventListener("click", () => deleteArtist(id));
+  document.querySelector("#btn-delete-cancel").addEventListener("click", () => closeDialog(delDialog));
+}
+
+function closeDialog(dialog) {
+  dialog.close();
 }
 
 export { updateGrid, chosenArtist };

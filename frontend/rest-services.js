@@ -14,9 +14,15 @@ async function createArtist(event) {
   event.preventDefault();
   const form = event.target;
   const name = form.newName.value;
-  const active = form.newActive.value;
+  const activeSince = form.newActive.value;
+  const genres = form.newGenres.value;
+  const labels = form.newLabels.value;
+  const birthdate = form.newBirthdate.value;
+  const shortDescription = form.newDesc.value;
+  const website = form.newWebsite.value;
+  const image = form.newImage.value;
 
-  const newArtist = { name, active };
+  const newArtist = { name, activeSince, genres, labels, birthdate, shortDescription, website, image };
   const artistJson = JSON.stringify(newArtist);
   const response = await fetch(`${endpoint}/artists`, {
     method: "POST",
@@ -63,8 +69,14 @@ async function updateArtist(event) {
   }
 }
 
-async function deleteArtist(artist) {
-  alert(artist);
+async function deleteArtist(id) {
+  console.log(id);
+  const response = await fetch(`${endpoint}/artists/${id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    updateGrid();
+  }
 }
 
 export { getArtists, createArtist, updateArtist, deleteArtist };

@@ -1,1 +1,112 @@
-[{"id":"013ae54f-bc35-46e1-bf70-69a1e75af548","name":"Drake","birthdate":"October 24, 1986","activeSince":"2001","genres":["Hip Hop","R&B"],"labels":["OVO Sound","Republic Records"],"website":"https://www.drakeofficial.com/","image":"https://static01.nyt.com/images/2021/12/08/arts/06drake2/06drake2-mediumSquareAt3X.jpg","shortDescription":"Canadian rapper, singer, and songwriter."},{"id":"67b63f0b-937e-4c86-9c14-5edcb1e9c362","name":"Santan Dave","birthdate":"June 5, 1998","activeSince":"2015","genres":["Rap","Grime"],"labels":["Neighbourhood Recordings"],"website":"https://www.santandave.com/","image":"https://soundvenue.com/wp-content/uploads/2021/11/Dave-920x920.jpeg","shortDescription":"British rapper, singer, and songwriter."},{"id":"4a24c7b1-41b7-4657-8ce1-41e5092e8c9c","name":"Tion Wayne","birthdate":"April 1, 1993","activeSince":"2010","genres":["Rap","Drill"],"labels":["Atlantic Records"],"website":"https://www.tionwayne.com/","image":"https://lastfm.freetls.fastly.net/i/u/ar0/1865f526d91d19c4d9687bb6b388addd.jpg","shortDescription":"British rapper and songwriter."},{"id":"34b4b102-5bc7-4aeb-8d12-3a460e190c6e","name":"Bugzy Malone","birthdate":"December 20, 1990","activeSince":"2010","genres":["Grime"],"labels":["B. Somebody"],"website":"https://bugzymalone.co.uk/","image":"https://m.media-amazon.com/images/M/MV5BZWI2MmM2ZTgtZDc5YS00MzgyLThkZjQtMmU0ZmE2M2RkNjlhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg","shortDescription":"British grime artist and actor."},{"id":"a37df97d-2b05-4614-b7f3-3be9948b4f68","name":"Fredo","birthdate":"March 6, 1994","activeSince":"2016","genres":["Rap","Hip Hop"],"labels":["Since '93","Sony Music"],"website":"https://www.fredpayne.co.uk/","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Fredoin2022.jpg/640px-Fredoin2022.jpg","shortDescription":"British rapper and songwriter."},{"id":"0f22d9d6-6f9d-4a2e-8d28-7d2047c288d1","name":"Lil Baby","birthdate":"December 3, 1994","activeSince":"2017","genres":["Hip Hop","Trap"],"labels":["Quality Control","Capitol Records"],"website":"https://www.lilbabyofficial.com/","image":"https://static01.nyt.com/images/2022/10/23/arts/23LIL-BABY2/23LIL-BABY2-mediumSquareAt3X.jpg","shortDescription":"American rapper, singer, and songwriter."},{"id":"a11aa0a7-4b3c-4f04-bc4a-9b0c5d0656a9","name":"Kendrick Lamar","birthdate":"June 17, 1987","activeSince":"2003","genres":["Hip Hop"],"labels":["Top Dawg","Aftermath","Interscope"],"website":"https://www.kendricklamar.com/","image":"https://heartbeats.dk/wp-content/uploads/2019/12/kendricklamar-new.jpg","shortDescription":"American rapper, songwriter, and record producer."},{"id":"d7c37e0f-015f-4c6c-88a0-e5f4eb1c2a97","name":"J. Cole","birthdate":"January 28, 1985","activeSince":"2007","genres":["Hip Hop","Rap"],"labels":["Dreamville","Roc Nation","Interscope"],"website":"https://www.jcolemusic.com/","image":"https://media.gq.com/photos/63c8d5a6cd63aa9138b13c7b/1:1/w_3641,h_3641,c_limit/1246142881","shortDescription":"American rapper, singer, and record producer."},{"id":"c361635a-2b7a-46a5-8a7d-7e365ec4e035","name":"Kanye West","birthdate":"June 8, 1977","activeSince":"1996","genres":["Hip Hop","Rap"],"labels":["GOOD Music","Def Jam"],"website":"https://www.kanyewest.com/","image":"https://flxt.tmsimg.com/assets/489020_v9_bc.jpg","shortDescription":"American rapper, producer, and fashion designer."},{"name":"Mo Mand","activeSince":"2018","genres":"Drill","labels":"VO recording","birthdate":"1999-05-13","shortDescription":"Wasteman from the block","website":"https://www.dblockeurope.com/","image":"https://i.guim.co.uk/img/media/585eeb17e6edff47208f83e05ebfdf99195331bf/0_807_3537_2122/master/3537.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=85447bf27a67dd8cce2d635b8e0ab90b","id":"04bfe498-bf93-4ea2-845e-ac270b7a4b31"}]
+[
+  {
+    "id": "013ae54f-bc35-46e1-bf70-69a1e75af548",
+    "name": "Drake",
+    "birthdate": "October 24, 1986",
+    "activeSince": "2001",
+    "genres": ["Hip Hop", "R&B"],
+    "labels": ["OVO Sound", "Republic Records"],
+    "website": "https://www.drakeofficial.com/",
+    "image": "https://static01.nyt.com/images/2021/12/08/arts/06drake2/06drake2-mediumSquareAt3X.jpg",
+    "shortDescription": "Canadian rapper, singer, and songwriter."
+  },
+  {
+    "id": "67b63f0b-937e-4c86-9c14-5edcb1e9c362",
+    "name": "Santan Dave",
+    "birthdate": "June 5, 1998",
+    "activeSince": "2015",
+    "genres": ["Rap", "Grime"],
+    "labels": ["Neighbourhood Recordings"],
+    "website": "https://www.santandave.com/",
+    "image": "https://soundvenue.com/wp-content/uploads/2021/11/Dave-920x920.jpeg",
+    "shortDescription": "British rapper, singer, and songwriter."
+  },
+  {
+    "id": "4a24c7b1-41b7-4657-8ce1-41e5092e8c9c",
+    "name": "Tion Wayne",
+    "birthdate": "April 1, 1993",
+    "activeSince": "2010",
+    "genres": ["Rap", "Drill"],
+    "labels": ["Atlantic Records"],
+    "website": "https://www.tionwayne.com/",
+    "image": "https://lastfm.freetls.fastly.net/i/u/ar0/1865f526d91d19c4d9687bb6b388addd.jpg",
+    "shortDescription": "British rapper and songwriter."
+  },
+  {
+    "id": "34b4b102-5bc7-4aeb-8d12-3a460e190c6e",
+    "name": "Bugzy Malone",
+    "birthdate": "December 20, 1990",
+    "activeSince": "2010",
+    "genres": ["Grime"],
+    "labels": ["B. Somebody"],
+    "website": "https://bugzymalone.co.uk/",
+    "image": "https://m.media-amazon.com/images/M/MV5BZWI2MmM2ZTgtZDc5YS00MzgyLThkZjQtMmU0ZmE2M2RkNjlhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+    "shortDescription": "British grime artist and actor."
+  },
+  {
+    "id": "a37df97d-2b05-4614-b7f3-3be9948b4f68",
+    "name": "Fredo",
+    "birthdate": "March 6, 1994",
+    "activeSince": "2016",
+    "genres": ["Rap", "Hip Hop"],
+    "labels": ["Since '93", "Sony Music"],
+    "website": "https://www.fredpayne.co.uk/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Fredoin2022.jpg/640px-Fredoin2022.jpg",
+    "shortDescription": "British rapper and songwriter."
+  },
+  {
+    "id": "0f22d9d6-6f9d-4a2e-8d28-7d2047c288d1",
+    "name": "Lil Baby",
+    "birthdate": "December 3, 1994",
+    "activeSince": "2017",
+    "genres": ["Hip Hop", "Trap"],
+    "labels": ["Quality Control", "Capitol Records"],
+    "website": "https://www.lilbabyofficial.com/",
+    "image": "https://static01.nyt.com/images/2022/10/23/arts/23LIL-BABY2/23LIL-BABY2-mediumSquareAt3X.jpg",
+    "shortDescription": "American rapper, singer, and songwriter."
+  },
+  {
+    "id": "a11aa0a7-4b3c-4f04-bc4a-9b0c5d0656a9",
+    "name": "Kendrick Lamar",
+    "birthdate": "June 17, 1987",
+    "activeSince": "2003",
+    "genres": ["Hip Hop"],
+    "labels": ["Top Dawg", "Aftermath", "Interscope"],
+    "website": "https://www.kendricklamar.com/",
+    "image": "https://heartbeats.dk/wp-content/uploads/2019/12/kendricklamar-new.jpg",
+    "shortDescription": "American rapper, songwriter, and record producer."
+  },
+  {
+    "id": "d7c37e0f-015f-4c6c-88a0-e5f4eb1c2a97",
+    "name": "J. Cole",
+    "birthdate": "January 28, 1985",
+    "activeSince": "2007",
+    "genres": ["Hip Hop", "Rap"],
+    "labels": ["Dreamville", "Roc Nation", "Interscope"],
+    "website": "https://www.jcolemusic.com/",
+    "image": "https://media.gq.com/photos/63c8d5a6cd63aa9138b13c7b/1:1/w_3641,h_3641,c_limit/1246142881",
+    "shortDescription": "American rapper, singer, and record producer."
+  },
+  {
+    "id": "c361635a-2b7a-46a5-8a7d-7e365ec4e035",
+    "name": "Kanye West",
+    "birthdate": "June 8, 1977",
+    "activeSince": "1996",
+    "genres": ["Hip Hop", "Rap"],
+    "labels": ["GOOD Music", "Def Jam"],
+    "website": "https://www.kanyewest.com/",
+    "image": "https://flxt.tmsimg.com/assets/489020_v9_bc.jpg",
+    "shortDescription": "American rapper, producer, and fashion designer."
+  },
+  {
+    "name": "Nouhaylas bitch",
+    "activeSince": "1928",
+    "genres": "Techno",
+    "labels": "Independent",
+    "birthdate": "1553-08-23",
+    "shortDescription": "Lille svans",
+    "website": "",
+    "image": "https://images.mubicdn.net/images/cast_member/2184/cache-2992-1547409411/image-w856.jpg",
+    "id": "b4f0a506-9d7a-4aed-9105-1184306833c4"
+  }
+]
