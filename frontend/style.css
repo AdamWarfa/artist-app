@@ -46,6 +46,14 @@ select {
   padding: 5px 10px;
 }
 
+#input-search {
+  background-color: rgb(42, 42, 42);
+  color: whitesmoke;
+  border-radius: 8px;
+  border: none;
+  padding: 5px 10px;
+}
+
 #top-btns {
   margin-left: 20px;
 }

@@ -8,19 +8,21 @@ const port = 3000;
 app.use(express.json());
 app.use(cors());
 
-const data = await fs.readFile("data.json");
-const artists = JSON.parse(data);
-
 app.get("/", (req, res) => {
   res.render("../frontend/index.html");
 });
 
 app.get("/artists", async (req, res) => {
+  const data = await fs.readFile("data.json");
+  const artists = JSON.parse(data);
   console.log(artists);
   res.json(artists);
 });
 
 app.post("/artists", async (req, res) => {
+  const data = await fs.readFile("data.json");
+  const artists = JSON.parse(data);
+
   console.log(req.body);
 
   const newArtist = req.body;
@@ -33,6 +35,9 @@ app.post("/artists", async (req, res) => {
 });
 
 app.put("/artists/:id", async (req, res) => {
+  const data = await fs.readFile("data.json");
+  const artists = JSON.parse(data);
+
   const updatedArtist = req.body;
   console.log(updatedArtist);
 
@@ -60,11 +65,11 @@ app.put("/artists/:id", async (req, res) => {
 });
 
 app.delete("/artists/:id", async (request, response) => {
-  const id = request.params.id;
-  console.log(id);
-
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
+
+  const id = request.params.id;
+  console.log(id);
 
   let artistToDelete = artists.find((artist) => artist.id == id);
   if (!artistToDelete) {
@@ -80,6 +85,7 @@ app.delete("/artists/:id", async (request, response) => {
   artists.splice(position, 1);
 
   fs.writeFile("data.json", JSON.stringify(artists));
+  console.log();
   response.json(artists);
 });
 

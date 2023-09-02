@@ -1,6 +1,6 @@
 "use strict";
 
-import { updateGrid, chosenArtist } from "./main.js";
+import { updateGrid, chosenArtist, artists } from "./main.js";
 
 const endpoint = "http://localhost:3000";
 
@@ -34,6 +34,7 @@ async function createArtist(event) {
 
   if (response.ok) {
     console.log("artist added");
+
     updateGrid();
     alert("New Artist Created!");
   }
@@ -76,6 +77,7 @@ async function deleteArtist(id) {
   });
   if (response.ok) {
     updateGrid();
+    console.log(artists);
   }
 }
 

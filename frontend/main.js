@@ -26,6 +26,7 @@ async function initApp() {
   document.querySelector("#home-link").addEventListener("click", goHome);
   document.querySelector("#favorite-link").addEventListener("click", goToFavorites);
   document.querySelector("#sort-select").addEventListener("change", chooseSort);
+  document.querySelector("#input-search").addEventListener("keyup", (event) => showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(event.target.value.toLowerCase()))));
 }
 
 function showArtists(artistList) {
@@ -67,6 +68,7 @@ function showArtists(artistList) {
 }
 
 async function updateGrid() {
+  artists = await getArtists(`${endpoint}/artists`);
   switch (view) {
     case "home":
       showArtists(artists);
@@ -168,4 +170,8 @@ function sortByActive(a, b) {
   return a.activeSince - b.activeSince;
 }
 
-export { updateGrid, chosenArtist };
+async function search(searchValue) {
+  showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase())));
+}
+
+export { updateGrid, chosenArtist, artists };
