@@ -7,6 +7,7 @@ let artists;
 let chosenArtist;
 let favoriteList;
 let savedFavorites = JSON.parse(localStorage.getItem("favorites"));
+let view = "home";
 
 async function initApp() {
   artists = await getArtists(`${endpoint}/artists`);
@@ -24,6 +25,7 @@ async function initApp() {
   document.querySelector("#btn-create").addEventListener("click", createClicked);
   document.querySelector("#home-link").addEventListener("click", goHome);
   document.querySelector("#favorite-link").addEventListener("click", goToFavorites);
+  document.querySelector("#sort-select").addEventListener("change", chooseSort);
 }
 
 function showArtists(artistList) {
@@ -65,7 +67,14 @@ function showArtists(artistList) {
 }
 
 async function updateGrid() {
-  showArtists(artists);
+  switch (view) {
+    case "home":
+      showArtists(artists);
+      break;
+    case "fave":
+      showArtists(favoriteList);
+      break;
+  }
 }
 
 function favoriteArtist(artist, favBtn) {
@@ -125,12 +134,38 @@ function closeDialog(dialog) {
 
 function goHome() {
   document.querySelector("#grid-container").innerHTML = "";
-  showArtists(artists);
+  view = "home";
+  updateGrid();
 }
 
 function goToFavorites() {
   document.querySelector("#grid-container").innerHTML = "";
-  showArtists(favoriteList);
+  view = "fave";
+  updateGrid();
+}
+
+function chooseSort() {
+  let sortValue = document.querySelector("#sort-select").value;
+  switch (sortValue) {
+    case "name":
+      artists.sort(sortByName);
+      favoriteList.sort(sortByName);
+      updateGrid();
+      break;
+    case "active":
+      artists.sort(sortByActive);
+      favoriteList.sort(sortByActive);
+      updateGrid();
+      break;
+  }
+}
+
+function sortByName(a, b) {
+  return a.name.localeCompare(b.name);
+}
+
+function sortByActive(a, b) {
+  return a.activeSince - b.activeSince;
 }
 
 export { updateGrid, chosenArtist };

@@ -18,15 +18,18 @@
       <h1>ARTIST-APP</h1>
     </header>
     <main>
-      <button id="btn-create">CREATE ARTIST</button>
-      <select name="sort-select" id="sort-select">
-        <option value="name">Name (A-Z)</option>
-        <option value="active">Debut Year</option>
-      </select>
+      <div id="top-btns">
+        <button id="btn-create">CREATE ARTIST</button>
+        <select name="sort-select" id="sort-select">
+          <option value="name">Name (A-Z)</option>
+          <option value="active">Debut Year</option>
+        </select>
+      </div>
       <nav id="navbar">
         <a id="home-link" href="#" rel="noopener noreferrer">HOME</a>
         <a id="favorite-link" href="#" rel="noopener noreferrer">FAVORITES</a>
       </nav>
+
       <dialog id="create-dialog">
         <form action="" id="create-form">
           <label for="newName">Name</label>

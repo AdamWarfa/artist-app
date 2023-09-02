@@ -37,3 +37,30 @@ button {
   padding: 5px 10px;
   cursor: pointer;
 }
+
+select {
+  background-color: rgb(42, 42, 42);
+  color: whitesmoke;
+  border-radius: 8px;
+  border: none;
+  padding: 5px 10px;
+}
+
+#top-btns {
+  margin-left: 20px;
+}
+
+#navbar {
+  text-align: center;
+}
+#navbar a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0 30px;
+  color: black;
+  font-size: large;
+}
+#navbar a:hover {
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
