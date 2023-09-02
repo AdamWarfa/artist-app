@@ -1,19 +1,29 @@
 "use strict";
-import { getArtists, createArtist, updateArtist, deleteArtist } from "./rest-services.js";
+import { getArtists, createArtist, updateArtist, deleteArtist, endpoint } from "./rest-services.js";
 
 window.addEventListener("load", initApp);
 
 let artists;
 let chosenArtist;
-let favoriteList = [];
+let favoriteList;
+let savedFavorites = JSON.parse(localStorage.getItem("favorites"));
 
 async function initApp() {
-  artists = await getArtists("../backend/data.json");
+  artists = await getArtists(`${endpoint}/artists`);
   console.log(artists);
+
+  if (savedFavorites) {
+    favoriteList = savedFavorites;
+    console.log(favoriteList);
+  } else {
+    favoriteList = [];
+  }
 
   showArtists(artists);
 
   document.querySelector("#btn-create").addEventListener("click", createClicked);
+  document.querySelector("#home-link").addEventListener("click", goHome);
+  document.querySelector("#favorite-link").addEventListener("click", goToFavorites);
 }
 
 function showArtists(artistList) {
@@ -33,13 +43,24 @@ function showArtists(artistList) {
             <p class="artist-active">${artist.activeSince}</p>
             <button class="btn-update">UPDATE</button>
             <button class="btn-delete">DELETE</button>
-            <button class="btn-favorite">🖤</button>
+            <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
         </article>
     `
     );
     document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
     document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id));
-    document.querySelector("article:last-child .btn-favorite").addEventListener("click", () => favoriteArtist(artist));
+
+    const favBtn = document.querySelector("article:last-child .btn-favorite");
+    let favoritesString = JSON.stringify(favoriteList);
+
+    if (favoritesString.includes(artist.id)) {
+      console.log(true);
+      favBtn.style.backgroundColor = "rgb(255, 68, 165)";
+      favBtn.innerHTML = `<i class="fa-solid fa-heart fa-xl" style="color: #0f0f0f;"></i>`;
+    } else {
+      console.log(false);
+    }
+    favBtn.addEventListener("click", () => favoriteArtist(artist, favBtn));
   }
 }
 
@@ -47,12 +68,23 @@ async function updateGrid() {
   showArtists(artists);
 }
 
-function favoriteArtist(artist) {
-  if (favoriteList.includes(artist)) {
-    alert("Artist already favorited");
+function favoriteArtist(artist, favBtn) {
+  let favoritesString = JSON.stringify(favoriteList);
+  console.log(favoritesString);
+
+  if (favoritesString.includes(artist.id)) {
+    const position = favoriteList.indexOf(artist);
+    favoriteList.splice(position, 1);
+    localStorage.setItem("favorites", JSON.stringify(favoriteList));
+    console.log(favoriteList);
+    favBtn.innerHTML = `<i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i>`;
+    favBtn.style.backgroundColor = "rgb(252, 176, 69)";
   } else {
     favoriteList.push(artist);
     console.log(favoriteList);
+    localStorage.setItem("favorites", JSON.stringify(favoriteList));
+    favBtn.innerHTML = `<i class="fa-solid fa-heart fa-xl" style="color: #0f0f0f;"></i>`;
+    favBtn.style.backgroundColor = "rgb(255, 68, 165)";
   }
 }
 
@@ -89,6 +121,16 @@ function deleteClicked(id) {
 
 function closeDialog(dialog) {
   dialog.close();
+}
+
+function goHome() {
+  document.querySelector("#grid-container").innerHTML = "";
+  showArtists(artists);
+}
+
+function goToFavorites() {
+  document.querySelector("#grid-container").innerHTML = "";
+  showArtists(favoriteList);
 }
 
 export { updateGrid, chosenArtist };

@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artist-App</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
@@ -12,6 +19,14 @@
     </header>
     <main>
       <button id="btn-create">CREATE ARTIST</button>
+      <select name="sort-select" id="sort-select">
+        <option value="name">Name (A-Z)</option>
+        <option value="active">Debut Year</option>
+      </select>
+      <nav id="navbar">
+        <a id="home-link" href="#" rel="noopener noreferrer">HOME</a>
+        <a id="favorite-link" href="#" rel="noopener noreferrer">FAVORITES</a>
+      </nav>
       <dialog id="create-dialog">
         <form action="" id="create-form">
           <label for="newName">Name</label>

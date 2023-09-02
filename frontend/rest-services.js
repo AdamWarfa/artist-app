@@ -79,4 +79,4 @@ async function deleteArtist(id) {
   }
 }
 
-export { getArtists, createArtist, updateArtist, deleteArtist };
+export { getArtists, createArtist, updateArtist, deleteArtist, endpoint };
