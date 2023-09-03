@@ -12,6 +12,7 @@ let view = "home";
 async function initApp() {
   artists = await getArtists(`${endpoint}/artists`);
   console.log(artists);
+  globalListeners();
 
   if (savedFavorites) {
     favoriteList = savedFavorites;
@@ -21,7 +22,11 @@ async function initApp() {
   }
 
   showArtists(artists);
+}
 
+function globalListeners() {
+  document.querySelector("#btn-close-create").addEventListener("click", () => closeDialog(document.querySelector("#create-dialog")));
+  document.querySelector("#btn-close-update").addEventListener("click", () => closeDialog(document.querySelector("#update-dialog")));
   document.querySelector("#btn-create").addEventListener("click", createClicked);
   document.querySelector("#home-link").addEventListener("click", goHome);
   document.querySelector("#favorite-link").addEventListener("click", goToFavorites);
@@ -44,9 +49,9 @@ function showArtists(artistList) {
             <p class="artist-desc">${artist.shortDescription}</p>
             <p class="artist-labels">Labels: ${artist.labels}</p>
             <p class="artist-active">Active since ${artist.activeSince}</p>
-            <button class="btn-update">UPDATE</button>
-            <button class="btn-delete">DELETE</button>
             <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
+            <button class="btn-update">EDIT</button>
+            <button class="btn-delete">DELETE</button>
         </article>
     `
     );

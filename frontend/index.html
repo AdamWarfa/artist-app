@@ -35,6 +35,7 @@
       </nav>
 
       <dialog id="create-dialog">
+        <h2>CREATE NEW ARTIST</h2>
         <form action="" id="create-form">
           <label for="newName">Name</label>
           <input type="text" name="newName" id="newName" placeholder="Type name..." />
@@ -53,10 +54,12 @@
           <label for="newImage">Image</label>
           <input type="url" name="newImage" id="newImage" placeholder="Change Image URL..." />
           <button>CREATE</button>
+          <button type="button" id="btn-close-create">CLOSE</button>
         </form>
       </dialog>
       <section id="grid-container"></section>
       <dialog id="update-dialog">
+        <h2>EDIT ARTIST</h2>
         <form action="" id="update-form">
           <label for="updateName">Name</label>
           <input type="text" name="updateName" id="updateName" placeholder="Change Name..." />
@@ -75,6 +78,7 @@
           <label for="updateImage">Image</label>
           <input type="url" name="updateImage" id="updateImage" placeholder="Change Image URL..." />
           <button>SUBMIT</button>
+          <button type="button" id="btn-close-update">CLOSE</button>
         </form>
       </dialog>
       <dialog id="delete-dialog">

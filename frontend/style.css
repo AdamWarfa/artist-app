@@ -18,15 +18,26 @@ dialog {
   background-color: rgba(131, 58, 180, 0.8);
   background: linear-gradient(138deg, rgba(131, 58, 180, 0.8) 17%, rgba(253, 29, 137, 0.8) 65%, rgba(252, 176, 69, 0.8) 89%);
   backdrop-filter: blur(2px);
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
+  font-size: large;
   -webkit-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
+}
+
+dialog h2 {
+  text-align: center;
+  color: black;
+}
+
+dialog::backdrop {
+  backdrop-filter: brightness(40%) blur(5px);
   overflow: hidden;
 }
+
 label {
   color: rgb(0, 0, 0);
   font-size: large;
