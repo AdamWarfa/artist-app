@@ -42,8 +42,8 @@ function showArtists(artistList) {
             <p class="artist-genres">${artist.genres}</p>
             <img id="artist-image" src=${artist.image} alt="" />
             <p class="artist-desc">${artist.shortDescription}</p>
-            <p class="artist-labels">${artist.labels}</p>
-            <p class="artist-active">${artist.activeSince}</p>
+            <p class="artist-labels">Labels: ${artist.labels}</p>
+            <p class="artist-active">Active since ${artist.activeSince}</p>
             <button class="btn-update">UPDATE</button>
             <button class="btn-delete">DELETE</button>
             <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
@@ -51,7 +51,7 @@ function showArtists(artistList) {
     `
     );
     document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
-    document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id));
+    document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id, artist));
 
     const favBtn = document.querySelector("article:last-child .btn-favorite");
     let favoritesString = JSON.stringify(favoriteList);
@@ -123,10 +123,10 @@ function updateClicked(artist) {
   document.querySelector("#update-form").addEventListener("submit", updateArtist);
 }
 
-function deleteClicked(id) {
+function deleteClicked(id, artist) {
   const delDialog = document.querySelector("#delete-dialog");
   delDialog.showModal();
-  document.querySelector("#btn-delete-confirm").addEventListener("click", () => deleteArtist(id));
+  document.querySelector("#btn-delete-confirm").addEventListener("click", () => deleteArtist(id, artist));
   document.querySelector("#btn-delete-cancel").addEventListener("click", () => closeDialog(delDialog));
 }
 
@@ -170,8 +170,8 @@ function sortByActive(a, b) {
   return a.activeSince - b.activeSince;
 }
 
-async function search(searchValue) {
-  showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase())));
-}
+// async function search(searchValue) {
+//   showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase())));
+// }
 
-export { updateGrid, chosenArtist, artists };
+export { updateGrid, chosenArtist, artists, favoriteList };

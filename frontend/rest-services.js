@@ -1,11 +1,11 @@
 "use strict";
 
-import { updateGrid, chosenArtist, artists } from "./main.js";
+import { updateGrid, chosenArtist, artists, favoriteList } from "./main.js";
 
 const endpoint = "http://localhost:3000";
 
-async function getArtists(json) {
-  const res = await fetch(json);
+async function getArtists(endpointValue) {
+  const res = await fetch(endpointValue);
   const data = res.json();
   return data;
 }
@@ -70,12 +70,15 @@ async function updateArtist(event) {
   }
 }
 
-async function deleteArtist(id) {
+async function deleteArtist(id, artist) {
   console.log(id);
   const response = await fetch(`${endpoint}/artists/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
+    const position = favoriteList.indexOf(artist);
+    favoriteList.splice(position, 1);
+    localStorage.setItem("favorites", JSON.stringify(favoriteList));
     updateGrid();
     console.log(artists);
   }

@@ -19,6 +19,18 @@ app.get("/artists", async (req, res) => {
   res.json(artists);
 });
 
+app.get("/artists/:id", async (req, res) => {
+  const data = await fs.readFile("data.json");
+  const artists = JSON.parse(data);
+
+  const id = req.params.id;
+
+  let artist = artists.find((artist) => artist.id == id);
+
+  console.log(artist);
+  res.json(artist);
+});
+
 app.post("/artists", async (req, res) => {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
