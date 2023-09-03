@@ -45,29 +45,33 @@ function showArtists(artistList) {
         <article class="grid-box">
 
             <h2 class="artist-name">${artist.name}</h2>
-            <div id="card-content-first">
-              <img id="artist-image" src=${artist.image} alt="" />
+            <div class="card-content-first">
+              <img class="artist-image" src=${artist.image} alt="" />
               <p class="artist-genres">${artist.genres}</p>
               <p class="artist-desc">${artist.shortDescription}</p>
-              <p class="artist-see-more">SEE MORE</p>
+              <p class="artist-see-more press-this">SEE MORE</p>
             </div>
-            <div id="card-content-second">
+            <div class="card-btns">
+              <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
+              <button class="btn-update">EDIT</button>
+              <button class="btn-delete">DELETE</button>
+            <div class="card-btns">
+            <div class="card-content-second" class="hide">
               <p class="artist-labels">Labels: ${artist.labels}</p>
               <p class="artist-active">Active since ${artist.activeSince}</p>
               <p class="artist-birthdate">Birthdate: ${artist.birthdate}</p>
               <p class="artist-website">Website: ${artist.website}</p>
+              <p class="artist-reset press-this">RESET</p>
 
-              
             </div>
-            <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
-            <button class="btn-update">EDIT</button>
-            <button class="btn-delete">DELETE</button>
+
         </article>
     `
     );
     document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
     document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id, artist));
-    document.querySelector("article:last-child .artist-see-more").addEventListener("click", scrollCards);
+    document.querySelector("article:last-child .artist-see-more").addEventListener("click", scrollCardsUp);
+    document.querySelector("article:last-child .artist-reset").addEventListener("click", scrollCardsDown);
 
     const favBtn = document.querySelector("article:last-child .btn-favorite");
     let favoritesString = JSON.stringify(favoriteList);
@@ -190,9 +194,25 @@ function sortByActive(a, b) {
 //   showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase())));
 // }
 
-function scrollCards() {
-  document.querySelector("#card-content-first").classList.add("scroll-up-hide");
-  document.querySelector("#card-content-second").classList.add("scroll-up-show");
+function scrollCardsUp(event) {
+  const gridbox = event.target.parentNode.parentNode;
+
+  gridbox.querySelector(".card-content-first").classList.remove("scroll-down-show");
+  gridbox.querySelector(".card-content-second").classList.remove("scroll-down-hide");
+
+  gridbox.querySelector(".card-content-first").classList.add("scroll-up-hide");
+  gridbox.querySelector(".card-content-second").classList.remove("hide");
+  gridbox.querySelector(".card-content-second").classList.add("scroll-up-show");
+}
+
+function scrollCardsDown(event) {
+  const gridbox = event.target.parentNode.parentNode;
+
+  gridbox.querySelector(".card-content-first").classList.remove("scroll-up-hide");
+  gridbox.querySelector(".card-content-second").classList.remove("scroll-up-show");
+  gridbox.querySelector(".card-content-first").classList.add("scroll-down-show");
+  gridbox.querySelector(".card-content-second").classList.remove("hide");
+  gridbox.querySelector(".card-content-second").classList.add("scroll-down-hide");
 }
 
 export { updateGrid, chosenArtist, artists, favoriteList };

@@ -55,15 +55,15 @@
     "shortDescription": "British rapper and songwriter."
   },
   {
-    "id": "0f22d9d6-6f9d-4a2e-8d28-7d2047c288d1",
     "name": "Lil Baby",
-    "birthdate": "December 3, 1994",
     "activeSince": "2017",
-    "genres": ["Hip Hop", "Trap"],
-    "labels": ["Quality Control", "Capitol Records"],
+    "genres": "Hip Hop,Trap",
+    "labels": "Quality Control,Capitol Records",
+    "birthdate": "",
+    "shortDescription": "American rapper, singer, and songwriter.",
     "website": "https://www.lilbabyofficial.com/",
     "image": "https://static01.nyt.com/images/2022/10/23/arts/23LIL-BABY2/23LIL-BABY2-mediumSquareAt3X.jpg",
-    "shortDescription": "American rapper, singer, and songwriter."
+    "id": "0f22d9d6-6f9d-4a2e-8d28-7d2047c288d1"
   },
   {
     "id": "a11aa0a7-4b3c-4f04-bc4a-9b0c5d0656a9",
