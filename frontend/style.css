@@ -63,6 +63,7 @@ form {
   -webkit-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
 }
 
 .grid-box img {
@@ -111,4 +112,61 @@ input {
 #navbar a:hover {
   font-weight: 400;
   color: rgb(255, 255, 255);
+}
+
+#card-content-first {
+  display: block;
+}
+
+#card-content-second {
+  display: none;
+}
+
+.scroll-up-hide {
+  animation: scrollUpHide;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.scroll-up-show {
+  animation: scrollUpShow;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.scroll-down {
+}
+
+@keyframes scrollUpHide {
+  0% {
+    visibility: visible;
+  }
+
+  99% {
+    visibility: visible;
+  }
+  100% {
+    transform: translate(0, -400px);
+    visibility: hidden;
+  }
+}
+
+@keyframes scrollUpShow {
+  0% {
+    visibility: hidden;
+    transform: translate(0, -400px);
+  }
+
+  1% {
+    visibility: visible;
+  }
+  100% {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+}
+
+@keyframes scrollDown {
 }

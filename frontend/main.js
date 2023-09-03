@@ -43,12 +43,22 @@ function showArtists(artistList) {
 
     
         <article class="grid-box">
+
             <h2 class="artist-name">${artist.name}</h2>
-            <p class="artist-genres">${artist.genres}</p>
-            <img id="artist-image" src=${artist.image} alt="" />
-            <p class="artist-desc">${artist.shortDescription}</p>
-            <p class="artist-labels">Labels: ${artist.labels}</p>
-            <p class="artist-active">Active since ${artist.activeSince}</p>
+            <div id="card-content-first">
+              <img id="artist-image" src=${artist.image} alt="" />
+              <p class="artist-genres">${artist.genres}</p>
+              <p class="artist-desc">${artist.shortDescription}</p>
+              <p class="artist-see-more">SEE MORE</p>
+            </div>
+            <div id="card-content-second">
+              <p class="artist-labels">Labels: ${artist.labels}</p>
+              <p class="artist-active">Active since ${artist.activeSince}</p>
+              <p class="artist-birthdate">Birthdate: ${artist.birthdate}</p>
+              <p class="artist-website">Website: ${artist.website}</p>
+
+              
+            </div>
             <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
             <button class="btn-update">EDIT</button>
             <button class="btn-delete">DELETE</button>
@@ -57,6 +67,7 @@ function showArtists(artistList) {
     );
     document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
     document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id, artist));
+    document.querySelector("article:last-child .artist-see-more").addEventListener("click", scrollCards);
 
     const favBtn = document.querySelector("article:last-child .btn-favorite");
     let favoritesString = JSON.stringify(favoriteList);
@@ -178,5 +189,10 @@ function sortByActive(a, b) {
 // async function search(searchValue) {
 //   showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase())));
 // }
+
+function scrollCards() {
+  document.querySelector("#card-content-first").classList.add("scroll-up-hide");
+  document.querySelector("#card-content-second").classList.add("scroll-up-show");
+}
 
 export { updateGrid, chosenArtist, artists, favoriteList };
