@@ -127,6 +127,12 @@ input {
   visibility: hidden;
 }
 
+.press-this {
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .scroll-up-hide {
   animation: scrollUpHide;
   animation-duration: 0.5s;
@@ -142,14 +148,14 @@ input {
 }
 
 .scroll-down-show {
-  animation: scrollUpHide;
+  animation: scrollDownShow;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
-  animation-fill-mode: reverse;
+  animation-fill-mode: forwards;
 }
 
 .scroll-down-hide {
-  animation: scrollUpShow;
+  animation: scrollDownHide;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -188,13 +194,13 @@ input {
 @keyframes scrollDownShow {
   0% {
     transform: translate(0, -400px);
-    visibility: visible;
+    visibility: hidden;
   }
-  99% {
+  1% {
     visibility: visible;
   }
   100% {
-    visibility: hidden;
+    visibility: visible;
   }
 }
 

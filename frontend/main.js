@@ -55,14 +55,13 @@ function showArtists(artistList) {
               <button class="btn-favorite"><i class="fa-regular fa-heart fa-xl" style="color: #0f0f0f;"></i></button>
               <button class="btn-update">EDIT</button>
               <button class="btn-delete">DELETE</button>
-            <div class="card-btns">
+            </div>
             <div class="card-content-second" class="hide">
               <p class="artist-labels">Labels: ${artist.labels}</p>
               <p class="artist-active">Active since ${artist.activeSince}</p>
               <p class="artist-birthdate">Birthdate: ${artist.birthdate}</p>
               <p class="artist-website">Website: ${artist.website}</p>
               <p class="artist-reset press-this">RESET</p>
-
             </div>
 
         </article>
@@ -88,7 +87,6 @@ function showArtists(artistList) {
 }
 
 async function updateGrid() {
-  artists = await getArtists(`${endpoint}/artists`);
   switch (view) {
     case "home":
       showArtists(artists);
@@ -168,14 +166,17 @@ function goToFavorites() {
 
 function chooseSort() {
   let sortValue = document.querySelector("#sort-select").value;
+  console.log(sortValue);
   switch (sortValue) {
     case "name":
       artists.sort(sortByName);
+      console.log(artists);
       favoriteList.sort(sortByName);
       updateGrid();
       break;
     case "active":
       artists.sort(sortByActive);
+      console.log(artists);
       favoriteList.sort(sortByActive);
       updateGrid();
       break;
@@ -211,7 +212,6 @@ function scrollCardsDown(event) {
   gridbox.querySelector(".card-content-first").classList.remove("scroll-up-hide");
   gridbox.querySelector(".card-content-second").classList.remove("scroll-up-show");
   gridbox.querySelector(".card-content-first").classList.add("scroll-down-show");
-  gridbox.querySelector(".card-content-second").classList.remove("hide");
   gridbox.querySelector(".card-content-second").classList.add("scroll-down-hide");
 }
 
