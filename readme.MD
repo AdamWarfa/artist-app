@@ -32,7 +32,7 @@ npm install
 
 Find index.html-filen og åbn den i en live server.
 
-## Usage
+## Brug
 
 I live serveren kan du se en liste af kort med adskillige kunstnere.
 
