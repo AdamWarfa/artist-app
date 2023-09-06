@@ -1,19 +1,25 @@
 "use strict";
+
+//Importering af funktioner/variable
 import { getArtists, createArtist, updateArtist, deleteArtist, endpoint } from "./rest-services.js";
 
+//Kør startfunktionen automatisk på load
 window.addEventListener("load", initApp);
 
+//Globale variable
 let artists;
 let chosenArtist;
 let favoriteList;
 let savedFavorites = JSON.parse(localStorage.getItem("favorites"));
 let view = "home";
 
+//Fetcher kunstnerlisten og aktivierer eventListeners
 async function initApp() {
   artists = await getArtists(`${endpoint}/artists`);
   console.log(artists);
   globalListeners();
 
+  //Finder favoritlisten i localStorage
   if (savedFavorites) {
     favoriteList = savedFavorites;
     console.log(favoriteList);
@@ -21,9 +27,11 @@ async function initApp() {
     favoriteList = [];
   }
 
+  //Viser listen grafisk
   showArtists(artists);
 }
 
+//EventListeners
 function globalListeners() {
   document.querySelector("#btn-close-create").addEventListener("click", () => closeDialog(document.querySelector("#create-dialog")));
   document.querySelector("#btn-close-update").addEventListener("click", () => closeDialog(document.querySelector("#update-dialog")));
@@ -34,6 +42,7 @@ function globalListeners() {
   document.querySelector("#input-search").addEventListener("keyup", (event) => showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(event.target.value.toLowerCase()))));
 }
 
+//Dom manipulation på kunstnerlisten
 function showArtists(artistList) {
   document.querySelector("#grid-container").innerHTML = "";
   for (const artist of artistList) {
@@ -67,14 +76,16 @@ function showArtists(artistList) {
         </article>
     `
     );
+
+    //eventlisteners på hvert kunstnerkort
     document.querySelector("article:last-child .btn-update").addEventListener("click", () => updateClicked(artist));
     document.querySelector("article:last-child .btn-delete").addEventListener("click", () => deleteClicked(artist.id, artist));
     document.querySelector("article:last-child .artist-see-more").addEventListener("click", scrollCardsUp);
     document.querySelector("article:last-child .artist-reset").addEventListener("click", scrollCardsDown);
 
+    //Bestemmer om hjerteikonet skal være orange eller pink (alt efter om en kunstner er "liked")
     const favBtn = document.querySelector("article:last-child .btn-favorite");
     let favoritesString = JSON.stringify(favoriteList);
-
     if (favoritesString.includes(artist.id)) {
       console.log(true);
       favBtn.style.backgroundColor = "rgb(255, 68, 165)";
@@ -86,6 +97,7 @@ function showArtists(artistList) {
   }
 }
 
+//Opdaterer den viste liste alt efter hvad der skal vises
 async function updateGrid() {
   switch (view) {
     case "home":
@@ -97,6 +109,7 @@ async function updateGrid() {
   }
 }
 
+//Tilføjer/fjerner en kunstner fra favoritlisten og local storage
 function favoriteArtist(artist, favBtn) {
   let favoritesString = JSON.stringify(favoriteList);
   console.log(favoritesString);
@@ -117,11 +130,13 @@ function favoriteArtist(artist, favBtn) {
   }
 }
 
+//Viser CREATE-formen
 function createClicked() {
   document.querySelector("#create-dialog").showModal();
   document.querySelector("#create-form").addEventListener("submit", createArtist);
 }
 
+//Viser UPDATE-formen med gammle værdier
 function updateClicked(artist) {
   document.querySelector("#update-dialog").showModal();
 
@@ -141,6 +156,7 @@ function updateClicked(artist) {
   document.querySelector("#update-form").addEventListener("submit", updateArtist);
 }
 
+//Viser DELETE-Dialogen
 function deleteClicked(id, artist) {
   const delDialog = document.querySelector("#delete-dialog");
   delDialog.showModal();
@@ -148,22 +164,26 @@ function deleteClicked(id, artist) {
   document.querySelector("#btn-delete-cancel").addEventListener("click", () => closeDialog(delDialog));
 }
 
+//Lukker den åbne dialog
 function closeDialog(dialog) {
   dialog.close();
 }
 
+//Ændr nuværende view til "home" så den fulde liste skal vises
 function goHome() {
   document.querySelector("#grid-container").innerHTML = "";
   view = "home";
   updateGrid();
 }
 
+//Ændr nuværende view til "fave" så favoritlisten skal vises
 function goToFavorites() {
   document.querySelector("#grid-container").innerHTML = "";
   view = "fave";
   updateGrid();
 }
 
+//Vælg og kald den korrekte sorteingsfunktion baseret på valgt value i dropdownmenuen
 function chooseSort() {
   let sortValue = document.querySelector("#sort-select").value;
   console.log(sortValue);
@@ -183,10 +203,12 @@ function chooseSort() {
   }
 }
 
+//Sorter efter Navn
 function sortByName(a, b) {
   return a.name.localeCompare(b.name);
 }
 
+//Sorter efter Debutår
 function sortByActive(a, b) {
   return a.activeSince - b.activeSince;
 }
@@ -195,6 +217,7 @@ function sortByActive(a, b) {
 //   showArtists(artists.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase())));
 // }
 
+//Kør animationen som viser yderligere info om kunstneren
 function scrollCardsUp(event) {
   const gridbox = event.target.parentNode.parentNode;
 
@@ -206,6 +229,7 @@ function scrollCardsUp(event) {
   gridbox.querySelector(".card-content-second").classList.add("scroll-up-show");
 }
 
+//Kør animationen som viser original info om kunstneren
 function scrollCardsDown(event) {
   const gridbox = event.target.parentNode.parentNode;
 
@@ -215,4 +239,5 @@ function scrollCardsDown(event) {
   gridbox.querySelector(".card-content-second").classList.add("scroll-down-hide");
 }
 
+//Eksportering af funktioner/variable
 export { updateGrid, chosenArtist, artists, favoriteList };

@@ -1,8 +1,10 @@
+//Importering af valgte dependencies
 import express, { request, response } from "express";
 import cors from "cors";
 import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
 
+//Deklarering af localhostporten og anvendelse af express og cors
 const app = express();
 const port = 3000;
 app.use(express.json());
@@ -12,6 +14,7 @@ app.get("/", (req, res) => {
   res.render("../frontend/index.html");
 });
 
+//GET for den fulde liste af kunstnere
 app.get("/artists", async (req, res) => {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
@@ -19,6 +22,7 @@ app.get("/artists", async (req, res) => {
   res.json(artists);
 });
 
+//GET for en enkelt kunstner valgt med unikt ID
 app.get("/artists/:id", async (req, res) => {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
@@ -35,6 +39,7 @@ app.get("/artists/:id", async (req, res) => {
   }
 });
 
+//POST til den fulde liste af kunstnere
 app.post("/artists", async (req, res) => {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
@@ -50,6 +55,7 @@ app.post("/artists", async (req, res) => {
   res.json(artists);
 });
 
+//PUT for en enkelt kunstner valgt med unikt ID
 app.put("/artists/:id", async (req, res) => {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
@@ -79,6 +85,7 @@ app.put("/artists/:id", async (req, res) => {
   }
 });
 
+//DELETE for en enkelt kunstner valgt med unikt ID
 app.delete("/artists/:id", async (request, response) => {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
@@ -104,6 +111,7 @@ app.delete("/artists/:id", async (request, response) => {
   }
 });
 
+//Brug terminalen til at fortælle at serveren kører
 app.listen(port, () => {
   console.log(`Server started on localhost:${port}`);
 });

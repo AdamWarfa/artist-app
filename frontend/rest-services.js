@@ -1,15 +1,19 @@
 "use strict";
 
+//Importering af funktioner/variable
 import { updateGrid, chosenArtist, artists, favoriteList } from "./main.js";
 
+//Endpoint
 const endpoint = "http://localhost:3000";
 
+//Fetch den fulde liste af kunstnere
 async function getArtists(endpointValue) {
   const res = await fetch(endpointValue);
   const data = res.json();
   return data;
 }
 
+//Opret en Kunstner udfra CREATE-formen og send den afsted som JSON
 async function createArtist(event) {
   event.preventDefault();
   const form = event.target;
@@ -40,6 +44,7 @@ async function createArtist(event) {
   }
 }
 
+//Udskift en Kunstner udfra UPDATE-formen og send den afsted som JSON
 async function updateArtist(event) {
   event.preventDefault();
   const form = event.target;
@@ -70,6 +75,7 @@ async function updateArtist(event) {
   }
 }
 
+//Slet en Kunstner fra JSON-filen i backenden
 async function deleteArtist(id, artist) {
   console.log(id);
   const response = await fetch(`${endpoint}/artists/${id}`, {
@@ -84,4 +90,5 @@ async function deleteArtist(id, artist) {
   }
 }
 
+//Eksportering af funktioner/variable
 export { getArtists, createArtist, updateArtist, deleteArtist, endpoint };
