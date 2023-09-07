@@ -46,6 +46,7 @@ dialog::backdrop {
 label {
   color: rgb(0, 0, 0);
   font-size: large;
+  margin: 15px 0;
 }
 
 form {
