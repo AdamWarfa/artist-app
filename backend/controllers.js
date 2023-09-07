@@ -1,29 +1,14 @@
-//Importering af valgte dependencies
-import express, { request, response } from "express";
-import cors from "cors";
 import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
 
-//Deklarering af localhostporten og anvendelse af express og cors
-const app = express();
-const port = 3000;
-app.use(express.json());
-app.use(cors());
-
-app.get("/", (req, res) => {
-  res.render("../frontend/index.html");
-});
-
-//GET for den fulde liste af kunstnere
-app.get("/artists", async (req, res) => {
+async function getArtistList(req, res) {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
   console.log(artists);
   res.json(artists);
-});
+}
 
-//GET for en enkelt kunstner valgt med unikt ID
-app.get("/artists/:id", async (req, res) => {
+async function getArtistSingle(req, res) {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
 
@@ -32,15 +17,14 @@ app.get("/artists/:id", async (req, res) => {
   let artist = artists.find((artist) => artist.id == id);
 
   if (!artist) {
-    res.status(404).json({ error: "404! Page not found" });
+    res.status(404).json({ error: "404! Artist not found" });
   } else {
     console.log(artist);
     res.json(artist);
   }
-});
+}
 
-//POST til den fulde liste af kunstnere
-app.post("/artists", async (req, res) => {
+async function postArtist(req, res) {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
 
@@ -53,10 +37,9 @@ app.post("/artists", async (req, res) => {
 
   fs.writeFile("data.json", JSON.stringify(artists));
   res.json(artists);
-});
+}
 
-//PUT for en enkelt kunstner valgt med unikt ID
-app.put("/artists/:id", async (req, res) => {
+async function putArtistSingle(req, res) {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
 
@@ -70,7 +53,7 @@ app.put("/artists/:id", async (req, res) => {
   console.log(oldArtist);
 
   if (!oldArtist) {
-    res.status(404).json({ error: "404! Page not found" });
+    res.status(404).json({ error: "404! Artist not found" });
   } else {
     let position = artists.indexOf(oldArtist);
 
@@ -83,10 +66,9 @@ app.put("/artists/:id", async (req, res) => {
     fs.writeFile("data.json", JSON.stringify(artists));
     res.json(artists);
   }
-});
+}
 
-//DELETE for en enkelt kunstner valgt med unikt ID
-app.delete("/artists/:id", async (request, response) => {
+async function deleteArtistSingle(request, response) {
   const data = await fs.readFile("data.json");
   const artists = JSON.parse(data);
 
@@ -95,7 +77,7 @@ app.delete("/artists/:id", async (request, response) => {
 
   let artistToDelete = artists.find((artist) => artist.id == id);
   if (!artistToDelete) {
-    response.status(404).json({ error: "404! Page not found" });
+    response.status(404).json({ error: "404! Artist not found" });
   } else {
     console.log(artistToDelete);
 
@@ -109,9 +91,6 @@ app.delete("/artists/:id", async (request, response) => {
     console.log();
     response.json(artists);
   }
-});
+}
 
-//Brug terminalen til at fortælle at serveren kører
-app.listen(port, () => {
-  console.log(`Server started on localhost:${port}`);
-});
+export { getArtistList, getArtistSingle, postArtist, putArtistSingle, deleteArtistSingle };
